@@ -1,0 +1,30 @@
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+      commit_ref:
+        type: string
+        required: true
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        path: tile-generator
+        ref: ${INPUT_COMMIT_REF}
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.10.7
+
+    - run: |
+        echo "version_string = '${INPUT_VERSION}'" > tile_generator/version.py
+        ./pyinstaller/build-binaries.sh
+        mv dist dist-"${INPUT_VERSION}"
+
+    - uses: actions/upload-artifact@v2
+      with:
+        path: tile-generator/dist*
