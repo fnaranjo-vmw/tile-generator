@@ -22,8 +22,9 @@ jobs:
 
     - name: Build sdist and bdist_wheel
       run: |
+        cd tile-generator-repo
         pip install setuptools pip wheel
-        python3 tile-generator-repo/setup.py sdist bdist_wheel
+        python3 setup.py sdist bdist_wheel
 
     - name: build-binaries
       run: |
