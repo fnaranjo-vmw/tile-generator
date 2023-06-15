@@ -22,6 +22,7 @@ jobs:
     - id: build-binaries
       run: |
         pip install virtualenv
+        pip install setuptools wheel
         cd tile_generator
         echo "version_string = '${INPUT_VERSION}'" > tile_generator/version.py
         ./pyinstaller/build-binaries.sh
