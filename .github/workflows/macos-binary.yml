@@ -20,7 +20,7 @@ jobs:
         python-version: '3.11'
         check-latest: true
         cache: 'pip'
-        cache-dependency-path: setup.py
+        cache-dependency-path: tile-generator-repo/setup.py
 
     - id: build-binaries
       run: |
