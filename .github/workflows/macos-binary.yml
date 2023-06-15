@@ -25,6 +25,7 @@ jobs:
     - id: build-binaries
       run: |
         cd tile-generator-repo
+        pip install wheel --plat-name macosx-10-13-x86_64
         python setup.py bdist_wheel --plat-name macosx-10-13-x86_64
         pip install virtualenv --plat-name macosx-10-13-x86_64
         echo "version_string = '${INPUT_VERSION}'" > tile_generator/version.py
