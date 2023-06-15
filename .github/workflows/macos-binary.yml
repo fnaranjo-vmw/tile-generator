@@ -19,7 +19,9 @@ jobs:
       with:
         python-version: 3.10.7
 
-    - run: |
+    - id: build-binaries
+      run: |
+        pip install virtualenv
         cd tile_generator
         echo "version_string = '${INPUT_VERSION}'" > tile_generator/version.py
         ./pyinstaller/build-binaries.sh
